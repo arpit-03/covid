@@ -7,7 +7,7 @@ env :GEM_PATH, ENV['GEM_PATH']
 
 # Example:
 #
-set :output, "/covid/cron_log.log"
+set :output, "/cronlog.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
