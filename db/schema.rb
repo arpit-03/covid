@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_03_20_043726) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ind1s", force: :cascade do |t|
     t.string "name"
-    t.integer "tcci", default: 0
-    t.integer "tccf", default: 0
-    t.integer "cured", default: 0
-    t.integer "death", default: 0
+    t.integer "tcci"
+    t.integer "tccf"
+    t.integer "cured"
+    t.integer "death"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

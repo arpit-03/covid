@@ -1,6 +1,5 @@
 env :PATH, ENV['PATH']
 env :GEM_PATH, ENV['GEM_PATH']
-set :bundle_command, "/usr/local/bin/bundle exec"
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -21,7 +20,7 @@ set :output, "/home/arpit/cron_log.log"
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 30.minutes do
+every 1.minute do
 	
 	runner "Info.initscrap"
 end
