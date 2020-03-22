@@ -1,0 +1,213 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+              <script>
+              new WOW().init();
+              </script>
+
+<div id="statistics" >
+	
+	<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #3a8af7">
+		<p class="stat-def">Total Cases</p>
+		<p class="stat-num"><%=Info.last.ttcci+Info.last.ttccf%></p>
+	</div>
+	<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #f0af46">
+		<p class="stat-def">Confirmed Cases (Indian National)</p>
+		<p class="stat-num"><%=Info.last.ttcci%></p>
+	</div>
+<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #5bae9f">
+	<p class="stat-def">Confirmed Cases (Foreign National)</p>
+		<p class="stat-num"><%=Info.last.ttccf%></p>
+	</div>
+	<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #e4424e">
+		<p class="stat-def">Cured</p>
+		<p class="stat-num"><%=Info.last.tcured%></p>
+	</div>
+	<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #7e2f6a">
+		<p class="stat-def">Deaths</p>
+		<p class="stat-num"><%=Info.last.tdeath%></p>
+	</div>
+		<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #f0af46">
+		<p class="stat-def">Percent Increase Decrease</p>
+		<p class="stat-num"><%=(((Info.last.ttcci+Info.last.ttccf-Info.last(2).first.ttcci-Info.last(2).first.ttccf)/((Info.last(2).first.ttcci+Info.last(2).first.ttccf*1.0)))*100).round(2)%>%</p>
+	</div>
+</div>
+<% data= Info.pluck(:time_created, :ttcci)%>
+<% data2= Info.pluck(:date_created)%>
+<% data3= Info.pluck(:ttccf)%>
+<% i=0%>
+<% data.each do |r|%>
+
+<% r[0]=data2[i].to_s+" "+r[0].strftime("%H:%M:%S").to_s%>
+<%data[i][0].to_time%>
+<%data[i][1]=data[i][1]+data3[i]%>
+<%i=i+1%>
+<%end%>
+<div id="people-chart" class="animated wow fadeInUp" data-wow-duration="1s">
+<%= area_chart data , xtitle: "Time and Date", ytitle: "No. of People", colors:["#3a8af7"],width: "100%",library: {fontSize: 90}   %>
+</div>
+<h2 id="head_table"class="animated wow fadeInLeft" data-wow-duration="1s">State Wise Status Of Corona Virus Spread</h2>
+<div id="tablemap" >
+<table id="myTable" class="display compact stripe hover animated wow fadeInLeft" data-wow-duration="1s" >
+	<thead>
+		<th>S.No</th>
+		<th>State/ U.T Name</th>
+		<th>Total Confirmed Cases (Indian Nationals)</th>
+		<th>Total Confirmed Cases (Foreign Nationals)</th>
+		<th>Cured</th>
+		<th>Deaths</th>
+	</thead>
+	<%i=1%>
+	<%Ind1.all.each do |row|%>
+<tr>
+	<td><%=i%></td>
+	<td><%=row.name%></td>
+	<td><%=row.tcci%></td>
+	<td><%=row.tccf%></td>
+	<td><%=row.cured%></td>
+	<td><%=row.death%></td>
+
+</tr>
+	<%i=i+1%>
+	<%end%>
+	<tfoot>
+		<td></td>
+		<td></td>
+		<td><%=Info.last.ttcci%></td>
+		<td><%=Info.last.ttccf%></td>
+		<td><%=Info.last.tcured%></td>
+		<td><%=Info.last.tdeath%></td>
+	</tfoot>
+</table>
+<div id="pie_chart_parent" class="d-none d-lg-flex animated wow fadeInRight" data-wow-duration="1s">
+
+	
+<div id="piechart" style="width: 40vw; height: 100vh;">
+<div id="piechart_click"><p>Click On State To Know Demographics</p></div>
+</div>
+</div>
+</div>
+
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<div align="center" id="india_map" class="animated wow fadeIn" data-wow-duration="1s" >
+	<h2 id='head_map'>State Wise Graphical Representation</h2>
+  <div id="visualization">   </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable({
+    	"paging":   false,
+    	"info": false
+    });
+
+    $('#myTable tr').click(function(){
+    	$('#table_state_pie_chart').remove();
+
+    	$.ajax({
+    		url: 'http://localhost:3000/api/v1/home/sendcitydata',
+    		type:'post',
+    		data: {name: $(this)[0].cells[1].textContent},
+    		success: function(result){
+    			console.log(result);
+    			 google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Type', 'No of People'],
+          ['Total Confirmed Cases (Indian Nationals)',     result[0].tcci],
+          ['Total Confirmed Cases (Foreign Nationals)',       result[0].tccf],
+          ['Cured',  result[0].cured],
+          ['Dead', result[0].death]
+        ]);
+
+        var options = {
+          title: result[0].name+" Demographics",
+         colors: ['blue','yellow', 'green', 'red']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    			}
+
+    	});
+console.log($(this)[0].cells[1].textContent);
+    });
+} );
+</script>
+<script type="text/javascript">
+if ( $(window).width() < 992) {     
+   hg= "70vh";
+   wd="100vw";
+    }
+    else {
+    hg= "70vh";
+   wd="80vw"
+    }
+	google.load('visualization', '1', {'packages': ['geochart']});
+google.setOnLoadCallback(drawVisualization);
+
+function drawVisualization() {
+  var data = google.visualization.arrayToDataTable([
+        ['State Code', 'State', 'Cases'],     
+          [ 'IN-UP','Uttar Pradesh', <%=Ind1.checkpre("Uttar Pradesh")%>],
+    ['IN-MH','Maharashtra', <%=Ind1.checkpre("Maharashtra")%>],
+    ['IN-BR','Bihar', <%=Ind1.checkpre("Bihar")%>],
+    ['IN-WB','West Bengal', <%=Ind1.checkpre("West Bengal")%>],
+    ['IN-MP','Madhya Pradesh', <%=Ind1.checkpre("Madhya Pradesh")%>],
+    ['IN-TN','Tamil Nadu', <%=Ind1.checkpre("Tamil Nadu")%>],
+    ['IN-RJ','Rajasthan', <%=Ind1.checkpre("Rajasthan")%>],
+    ['IN-KA','Karnataka',<%=Ind1.checkpre("Karnataka")%>],
+    ['IN-GJ','Gujarat', <%=Ind1.checkpre("Gujarat")%>],
+    ['IN-AP','Andhra Pradesh', <%=Ind1.checkpre("Andhra Pradesh")%>],
+    ['IN-OR','Orissa', <%=Ind1.checkpre("Odisha")%>],
+    ['IN-TG','Telangana', <%=Ind1.checkpre("Telangana")%>],
+    ['IN-KL','Kerala', <%=Ind1.checkpre("Kerala")%>],
+    ['IN-JH','Jharkhand', <%=Ind1.checkpre("Jharkhand")%>],
+    ['IN-AS','Assam', <%=Ind1.checkpre("Assam")%>],
+    ['IN-PB','Punjab', <%=Ind1.checkpre("Punjab")%>],
+    ['IN-CT','Chhattisgarh', <%=Ind1.checkpre("Chhattisgarh")%>],
+    ['IN-HR','Haryana', <%=Ind1.checkpre("Haryana")%>],
+    ['IN-JK','Jammu and Kashmir', <%=Ind1.checkpre("Jammu and Kashmir")%>],
+    ['IN-UT','Uttarakhand', <%=Ind1.checkpre("Uttarakhand")%>],
+    ['IN-HP','Himachal Pradesh', <%=Ind1.checkpre("Himachal Pradesh")%>],
+    ['IN-TR','Tripura', <%=Ind1.checkpre("Tripura")%>],
+    ['IN-ML','Meghalaya', <%=Ind1.checkpre("Meghalaya")%>],
+    ['IN-MN','Manipur', <%=Ind1.checkpre("Manipur")%>],
+    ['IN-NL','Nagaland', <%=Ind1.checkpre("Nagaland")%>],
+    ['IN-GA','Goa', <%=Ind1.checkpre("Goa")%>],
+    ['IN-AR', 'Arunachal Pradesh', <%=Ind1.checkpre("Arunachal Pradesh")%>],
+    ['IN-MZ','Mizoram', <%=Ind1.checkpre("Mizoram")%>],
+    ['IN-SK','Sikkim', <%=Ind1.checkpre("Sikkim")%>],
+    ['IN-DL','Delhi', <%=Ind1.checkpre("Delhi")%>],
+    ['IN-PY','Puducherry', <%=Ind1.checkpre("Puducherry")%>],
+    ['IN-CH','Chandigarh', <%=Ind1.checkpre("Union Territory of Chandigarh")%>],
+    ['IN-AN','Andaman and Nicobar Islands', <%=Ind1.checkpre("Andaman and Nicobar Islands")%>],
+    ['IN-DN','Dadra and Nagar Haveli', <%=Ind1.checkpre("Dadra and Nagar Haveli")%>],
+    ['IN-DD','Daman and Diu', <%=Ind1.checkpre("Daman and Diu")%>],
+    ['IN-LD','Lakshadweep', <%=Ind1.checkpre("Lakshadweep")%>]
+  ]);
+
+      var opts = {
+        region: 'IN',
+        domain:'IN',
+        displayMode: 'regions',
+        colorAxis: {colors: ['#ffffff', '#ff0e0e', '#9c1b1b']},
+        resolution: 'provinces',
+        /*backgroundColor: '#81d4fa',*/
+        /*datalessRegionColor: '#81d4fa',*/
+        defaultColor: '#f5f5f5',
+        width: hg, 
+        height: wd,
+      
+      };
+      var geochart = new google.visualization.GeoChart(
+          document.getElementById('visualization'));
+      geochart.draw(data, opts);
+    };
+
+</script>

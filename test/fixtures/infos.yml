@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_created: 2020-03-20 10:07:26
+  date_created: 2020-03-20
+  ttcci: 1
+  ttccf: 
+  tcured: 1
+  tdeath: 1
+
+two:
+  time_created: 2020-03-20 10:07:26
+  date_created: 2020-03-20
+  ttcci: 1
+  ttccf: 
+  tcured: 1
+  tdeath: 1

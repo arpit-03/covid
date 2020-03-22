@@ -1,0 +1,2 @@
+module PreventHelper
+end

@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+#header{
+	height: 10vh;
+    background-color: #3a8af7;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+}
+#hl{
+	    height: 100%;
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+}
+#hl h1{
+	  margin:0;
+font-size: 200%;
+    color: white;
+    font-family: 'Kalam', cursive;}
+#sub_header{
+    background-color: #cfd5e0;
+    height: 5vh;
+    border-bottom: solid 2px #9085ab;
+}
+#sub_header ul{
+    color: #6a6b8a;
+    list-style: none;
+    display: flex;
+    font-weight: 600;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+#footer{
+justify-content: space-between;
+    background-color: #3a8af7;
+    /* margin: 0; */
+    display: flex;
+    font-weight: 800;
+    color: white;
+    height: 14vh;
+    font-family: monospace;
+    font-size: 110%;
+    padding: 20px;
+    border-top: solid 2px black;
+    a{
+    text-decoration:none;
+    color:white;
+    }
+}
+ @media (max-width: 992px) { 
+#header{
+height: 6vh;
+}
+#hl h1{
+    font-size:250%;
+}
+#subheadernav{
+    font-size:150%; 
+}
+#footer{
+    height:6vh;
+}
+ }
+
+
+
+#subheadernav{
+    display: flex;
+    justify-content:space-around;
+     width: 100%;
+
+}
+#india_map{
+    padding:80px;
+}
+}

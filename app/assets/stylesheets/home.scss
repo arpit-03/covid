@@ -1,0 +1,101 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#piechart_click{
+	text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #e0e0e4;
+    color: #6b6b94;
+}
+#statistics{
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: space-around;
+}
+    #statistics div{
+    	    height: 18vh;
+    margin-left: 3vw;
+    margin-top: 3vh;
+    border-radius: 10px;
+    margin-bottom: 3vh;
+    margin-right: 3vw;
+    background-color: #e4e6f5;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+    width: 20vw;
+    box-shadow: 2px 2px 5px 5px #b8bfd2;
+    }
+#statistics div p{
+	text-align: center;
+	color:white;
+}
+.stat-def{
+	font-size: 80%;
+}
+    .stat-num{
+    	text-align:center;
+    	font-size: 180%;
+    	font-weight:800;
+    }
+
+    #people-chart{
+    	padding:30px;
+    }
+    #myTable{
+        width: 50vw;
+    padding: 25px;
+    font-size: 10px;
+
+}
+#myTable_wrapper{
+	min-height: 100vh;
+}
+#tablemap{
+	    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#table_state_pie_chart{
+	width: 50vw;
+}
+#head_table{
+	font-family: monospace;
+	font-size: 150%;
+    font-weight: 800;
+    margin-left: 10px;
+        margin-bottom: 20px;
+}
+#head_map{
+	font-family: monospace;
+	font-size: 150%;
+    font-weight: 800;
+    margin-left: 10px;
+        margin-bottom: 20px;	
+}
+ @media (max-width: 992px) { 
+
+
+#statistics div {
+font-size:230%;
+height:14vh;
+width:38vw;	
+}
+#myTable_wrapper{
+	min-height:50vh;
+}
+#myTable{
+	width:90vw;
+	font-size: 25px;
+
+}
+ }
+
+
+

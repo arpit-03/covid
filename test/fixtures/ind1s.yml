@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  tcci: 1
+  tccf: 1
+  cured: 1
+  death: 1
+
+two:
+  name: MyString
+  tcci: 1
+  tccf: 1
+  cured: 1
+  death: 1

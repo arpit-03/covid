@@ -1,0 +1,42 @@
+// Place all the styles related to the information controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#info_about{
+	    padding: 25px;
+	    p{
+	    font-family: serif;
+    color: #424850;
+	    }
+}
+#videos{
+	font-size: 150%;
+    font-weight: 800;
+    margin-left: 10px;
+    div{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    }
+    iframe{
+    margin-top:10px;
+    margin-bottom:10px;
+    }
+}
+
+ @media (max-width: 992px) { 
+
+#info_about{
+p{
+	font-size:160%;
+}	
+}
+#videos{
+	iframe{
+	width:40vw;
+	 margin-top:15px;
+    margin-bottom:15px;
+	height:20vh;
+	}
+}
+ 
+}
