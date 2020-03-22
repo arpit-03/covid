@@ -7,7 +7,7 @@ env :GEM_PATH, ENV['GEM_PATH']
 
 # Example:
 #
-set :output, "log/cron_log.log"
+set :output, "/home/deploy/cron_log.log"
 env :PATH, ENV['PATH']
 #
 # every 2.hours do
