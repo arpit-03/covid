@@ -27,16 +27,20 @@
     margin-left: 10px;
 
 }
+
 #hl h1{
 	  margin:0;
 font-size: 200%;
     color: white;
-    font-family: 'Kalam', cursive;}
+    font-family: 'Kalam', cursive;
+}
+
 #sub_header{
     background-color: #cfd5e0;
     height: 5vh;
     border-bottom: solid 2px #9085ab;
 }
+
 #sub_header ul{
     color: #6a6b8a;
     list-style: none;
@@ -88,5 +92,4 @@ height: 6vh;
 }
 #india_map{
     padding:80px;
-}
 }

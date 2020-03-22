@@ -2,7 +2,7 @@
 lock "~> 3.12.1"
 
 set :application, "covid"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git://github.com/arpit-03/covid.git"
 
 
 # Deploy to the user's home directory

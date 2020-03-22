@@ -10,12 +10,13 @@
     background-color: #e0e0e4;
     color: #6b6b94;
 }
+
 #statistics{
 	display: flex;
 	flex-wrap: wrap;
     justify-content: space-around;
-}
-    #statistics div{
+
+div{
     	    height: 18vh;
     margin-left: 3vw;
     margin-top: 3vh;
@@ -30,14 +31,18 @@
     align-items: center;
     width: 20vw;
     box-shadow: 2px 2px 5px 5px #b8bfd2;
-    }
+    
 #statistics div p{
 	text-align: center;
 	color:white;
 }
+}
+}
+
 .stat-def{
 	font-size: 80%;
 }
+
     .stat-num{
     	text-align:center;
     	font-size: 180%;
@@ -82,19 +87,24 @@
  @media (max-width: 992px) { 
 
 
-#statistics div {
+#statistics {
+div{
 font-size:230%;
 height:14vh;
 width:38vw;	
 }
+}
+
 #myTable_wrapper{
 	min-height:50vh;
 }
+
 #myTable{
 	width:90vw;
 	font-size: 25px;
 
 }
+
  }
 
 

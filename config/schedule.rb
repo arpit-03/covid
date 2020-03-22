@@ -23,5 +23,5 @@ set :output, "/home/arpit/cron_log.log"
 # Learn more: http://github.com/javan/whenever
 every 30.minutes do
 	
-	runner "Info.initscrap", :environment => 'development'
+	runner "Info.initscrap"
 end
