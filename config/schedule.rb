@@ -1,4 +1,4 @@
-env :PATH, ENV['PATH']
+\
 env :GEM_PATH, ENV['GEM_PATH']
 # Use this file to easily define all of your cron jobs.
 #
@@ -7,7 +7,8 @@ env :GEM_PATH, ENV['GEM_PATH']
 
 # Example:
 #
-set :output, "/cronlog.log"
+set :output, "log/cron_log.log"
+env :PATH, ENV['PATH']
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -20,7 +21,7 @@ set :output, "/cronlog.log"
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.minute do
+every 2.minutes do
 	
 	runner "Info.initscrap"
 end
