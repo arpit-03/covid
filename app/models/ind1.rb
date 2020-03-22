@@ -1,5 +1,5 @@
 class Ind1 < ApplicationRecord
-require 'csv'
+
 
 def self.checkpre(name)
 if(!Ind1.find_by(name: name))

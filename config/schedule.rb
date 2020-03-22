@@ -7,8 +7,7 @@ env :GEM_PATH, ENV['GEM_PATH']
 
 # Example:
 #
-set :output, "/home/arpit/cron_log.log"
-#
+
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
 #   runner "MyModel.some_method"
