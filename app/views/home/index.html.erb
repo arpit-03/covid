@@ -28,14 +28,13 @@
 	</div>
 		<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #f0af46">
 		<p class="stat-def">Percent Increase/Decrease Per Day</p>
-    <%isum=Info.order(:date_created).group(:date_created).sum(:ttcci)%>
-    <%isum=isum.to_a%>
-    <%isum1=isum[0][1]%>
-    <%isum2=isum[1][1]%>
-    <%fsum=Info.order(:date_created).group(:date_created).sum(:ttccf)%>
-     <%fsum=fsum.to_a%>
-     <%fsum1=fsum[0][1]%>
-    <%fsum2=fsum[1][1]%>
+    <%isum=Info.select('DISTINCT ON ("date_created") *').order("date_created, time_created DESC").last(2)%>
+    
+    <%isum1=isum[0].ttcci%>
+    <%isum2=isum[1].ttcci%>
+ 
+     <%fsum1=isum[0].ttccf%>
+    <%fsum2=isum[1].ttccf%>
 		<p class="stat-num"><%=(((isum2+fsum2-isum1-fsum1)/(isum1+fsum1*1.0))*100).round(2)%>%</p>
 	</div>
 </div>
