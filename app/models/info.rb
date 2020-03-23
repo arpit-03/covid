@@ -12,8 +12,7 @@ class Info < ApplicationRecord
 
 
 update_date=infosub.text.split('on ').last.split(' at ').first
-update_time=infosub.text.split('on ').last.split(' at ').last.split(')').first.split(' ').first.delete_suffix!('0')+" "+
-infosub.text.split('on ').last.split(' at ').last.split(')').first.split(' ').last
+update_time=infosub.text.split('on ').last.split(' at ').last.split(')').first
 
 update_date=update_date.to_date
 update_time=Time.parse(update_time).strftime("%H:%M:%S")
