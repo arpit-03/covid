@@ -32,4 +32,4 @@ production:
   pool: 5
   username: deploy
   password: canvasa110!
-  database: covid_production
+  database: covid
