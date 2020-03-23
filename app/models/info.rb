@@ -1,7 +1,7 @@
 class Info < ApplicationRecord
  require 'nokogiri'
   require 'httparty'
- 
+
   def self.initscrap
   	doc=HTTParty.get("https://www.mohfw.gov.in/")
   	@parse_page ||= Nokogiri::HTML(doc)
@@ -9,10 +9,11 @@ class Info < ApplicationRecord
  infosub=@parse_page.css('div.content.newtab').css('p')
  i=0
  s=infom.length
- 
+
 
 update_date=infosub.text.split('on ').last.split(' at ').first
-update_time=infosub.text.split('on ').last.split(' at ').last.split(')').first.delete_suffix!('0')
+update_time=infosub.text.split('on ').last.split(' at ').last.split(')').first.split(' ').first.delete_suffix!('0')+" "+
+infosub.text.split('on ').last.split(' at ').last.split(')').first.split(' ').last
 
 update_date=update_date.to_date
 update_time=Time.parse(update_time).strftime("%H:%M:%S")
