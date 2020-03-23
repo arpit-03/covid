@@ -10,7 +10,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  username: deploy
+  username: arpit
   password: canvasa110!
 
 development:
@@ -25,5 +25,11 @@ test:
   database: covid_test
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  username: deploy
+  password: canvasa110!
   database: covid_production
