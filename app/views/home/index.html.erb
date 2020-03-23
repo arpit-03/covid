@@ -81,7 +81,7 @@
 <div id="pie_chart_parent" class="d-none d-lg-flex animated wow fadeInRight" data-wow-duration="1s">
 
 	
-<div id="piechart" style="width: 40vw; height: 100vh;">
+<div id="piechart"  style="width: 40vw; height: 100vh;">
 <div id="piechart_click"><p>Click On State To Know Demographics</p></div>
 </div>
 </div>
@@ -130,6 +130,7 @@ $(document).ready( function () {
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
+$('#piechart').addClass('animated fadeIn');
         chart.draw(data, options);
       }
     			}
@@ -145,8 +146,8 @@ if ( $(window).width() < 992) {
    wd="100vw";
     }
     else {
-    hg= "70vh";
-   wd="80vw"
+    hg= "80vh";
+   wd="50vw"
     }
 	google.load('visualization', '1', {'packages': ['geochart']});
 google.setOnLoadCallback(drawVisualization);
