@@ -43,8 +43,14 @@
 <%i=i+1%>
 <%end%>
 <div id="people-chart" class="animated wow fadeInUp" data-wow-duration="1s">
-<%= area_chart data , xtitle: "Time and Date", ytitle: "No. of People", colors:["#3a8af7"],width: "100%",library: {fontSize: 90}   %>
+<%= area_chart data , xtitle: "Time and Date", ytitle: "No. of People", colors:["#3a8af7"],width: "100%",library: {fontSize: 90}  ,stacked: true %>
 </div>
+
+
+
+
+
+
 <h2 id="head_table"class="animated wow fadeInLeft" data-wow-duration="1s">State Wise Status Of Corona Virus Spread</h2>
 <div id="tablemap" >
 <table id="myTable" class="display compact stripe hover animated wow fadeInLeft" data-wow-duration="1s" >
@@ -90,7 +96,7 @@
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
 <div align="center" id="india_map" class="animated wow fadeIn" data-wow-duration="1s" >
 	<h2 id='head_map'>State Wise Graphical Representation</h2>
-  <div id="visualization">   </div>
+  <div id="visualization" >   </div>
 </div>
 
 
@@ -146,11 +152,16 @@ if ( $(window).width() < 992) {
    wd="100vw";
     }
     else {
-    hg= "80vh";
-   wd="50vw"
+    hg= "50vh";
+   wd="70vw"
     }
-	google.load('visualization', '1', {'packages': ['geochart']});
-google.setOnLoadCallback(drawVisualization);
+	 google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+      
+      });
+      google.charts.setOnLoadCallback(drawVisualization);
 
 function drawVisualization() {
   var data = google.visualization.arrayToDataTable([
@@ -193,8 +204,9 @@ function drawVisualization() {
     ['IN-LD','Lakshadweep', <%=Ind1.checkpre("Lakshadweep")%>]
   ]);
 
-      var opts = {
-        region: 'IN',
+    
+        var options = {
+           region: 'IN',
         domain:'IN',
         displayMode: 'regions',
         colorAxis: {colors: ['#ffffff', '#ff0e0e', '#9c1b1b']},
@@ -202,13 +214,15 @@ function drawVisualization() {
         /*backgroundColor: '#81d4fa',*/
         /*datalessRegionColor: '#81d4fa',*/
         defaultColor: '#f5f5f5',
-        width: hg, 
-        height: wd,
+        keepAspectRatio: false,
+        width: wd, 
+        height: hg,
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('visualization'));
+
+        chart.draw(data, options);
       
-      };
-      var geochart = new google.visualization.GeoChart(
-          document.getElementById('visualization'));
-      geochart.draw(data, opts);
     };
 
 </script>
