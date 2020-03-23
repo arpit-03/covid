@@ -5,6 +5,7 @@ class Info < ApplicationRecord
   def self.initscrap
   	doc=HTTParty.get("https://www.mohfw.gov.in/")
   	@parse_page ||= Nokogiri::HTML(doc)
+   
  infom= @parse_page.css('table.table.table-striped.table-dark')[1].css('tr')
  infosub=@parse_page.css('div.content.newtab').css('p')
  i=0

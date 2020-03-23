@@ -51,7 +51,7 @@
 
 
 
-<h2 id="head_table"class="animated wow fadeInLeft" data-wow-duration="1s">State Wise Status Of Corona Virus Spread</h2>
+<h2 id="head_table"class="animated wow fadeInLeft" data-wow-duration="1s">State Wise Spread Of Corona Virus in India</h2>
 <div id="tablemap" >
 <table id="myTable" class="display compact stripe hover animated wow fadeInLeft" data-wow-duration="1s" >
 	<thead>
@@ -78,7 +78,7 @@
 	<tfoot>
 		<td></td>
 		<td></td>
-		<td><%=Info.last.ttcci%></td>
+		<td><%=Ind1.sum(:tcci)%></td>
 		<td><%=Info.last.ttccf%></td>
 		<td><%=Info.last.tcured%></td>
 		<td><%=Info.last.tdeath%></td>
@@ -95,7 +95,7 @@
 
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
 <div align="center" id="india_map" class="animated wow fadeIn" data-wow-duration="1s" >
-	<h2 id='head_map'>State Wise Graphical Representation</h2>
+	<h2 id='head_map'>Corona Virus India State Wise Map</h2>
   <div id="visualization" >   </div>
 </div>
 
