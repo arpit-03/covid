@@ -21,7 +21,7 @@ env :PATH, ENV['PATH']
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 2.minutes do
+every 30.minutes do
 	
 	runner "Info.initscrap"
 end
