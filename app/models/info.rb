@@ -1,8 +1,7 @@
 class Info < ApplicationRecord
  require 'nokogiri'
   require 'httparty'
-require 'byebug'
-require 'pry'
+
   def self.initscrap
   	doc=HTTParty.get("https://www.mohfw.gov.in/")
   	@parse_page ||= Nokogiri::HTML(doc)
