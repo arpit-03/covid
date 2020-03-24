@@ -29,11 +29,13 @@
 
 }
 
+
 #hl h1{
 	  margin:0;
 font-size: 200%;
     color: white;
-    font-family: 'Kalam', cursive;
+    font-family: 'Righteous', cursive;
+    text-shadow: 4px 4px 5px black;
 }
 
 #sub_header{
@@ -84,9 +86,7 @@ height: 6vh;
     margin-left: 0;
 }
 #hl h1{
-    font-size: 290%;
-    font-weight: 800;
-    text-shadow: 4px 8px 14px #7e2f6a;
+       font-size: 45px;
 
 }
 #subheadernav{
