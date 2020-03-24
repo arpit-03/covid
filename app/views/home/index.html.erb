@@ -118,7 +118,7 @@ $(document).ready( function () {
     	$('#table_state_pie_chart').remove();
 
     	$.ajax({
-    		url: 'http://infocoronavirus.in/api/v1/home/sendcitydata',
+    		url: '/api/v1/home/sendcitydata',
     		type:'post',
     		data: {name: $(this)[0].cells[1].textContent},
     		success: function(result){
