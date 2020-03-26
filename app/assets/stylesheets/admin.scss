@@ -1,0 +1,47 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#contentcreate{
+padding: 20px;
+    border: solid 2px #b2b9bf;
+    border-radius: 20px;
+    margin: 20px;
+    width: 55vw;
+	    height: fit-content;
+background-color:white;
+	}
+
+
+#admin_top3_div{
+		padding: 20px;
+    width: 40vw;
+    border: solid 2px #b2b9be;
+    border-radius: 20px;
+    margin: 20px;
+    background-color:white;
+    height:fit-content;
+    font-size:12px;
+    text-align:center;
+}
+
+#outputadmindiv{
+	padding: 20px;
+    width: 40vw;
+    border: solid 2px #b2b9be;
+    border-radius: 20px;
+    margin: 20px;
+    background-color:white;
+    height:fit-content;
+font-size:12px;
+}
+#adminpanel{
+	display: flex;
+    justify-content: space-around;
+    background-color:#f7f7f7;
+h2{
+	font-size: 22px;
+    color: #b2b9be;
+    text-align: center;
+}
+}
+

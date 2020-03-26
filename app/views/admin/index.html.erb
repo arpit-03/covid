@@ -1,0 +1,88 @@
+<div id="adminpanel">
+	<div id="contentcreate">
+		<h2>Create New Post</h2>
+<%=form_for @newpage , url: contentsave_path do |f|%>
+<%=f.text_field :title , class: 'form-control', placeholder: 'Title'%><br>
+<%=f.text_field :author,class: 'form-control', placeholder: 'Author' %><br>
+<%=f.date_field :date,class: 'form-control' %><br>
+<%=f.rich_text_area :body %><br>
+<%=f.text_field :metakey,class: 'form-control', placeholder: 'Meta Keywords' %><br>
+<%=f.text_field :metadesc,class: 'form-control', placeholder: 'Meta Description' %><br>
+<%=f.submit :class => 'btn btn-primary'%>
+
+<%end%>
+</div>
+<div>
+<div id="outputadmindiv">
+	<h2>All Posts</h2>
+	<%if @tcontent==nil%>
+	<div>
+		<p>NO DATA</p>
+	</div>
+	<%else%>
+	<table id="admintable" class="display compact stripe hover">
+	<thead>
+		<th>S.no</th>
+		<th>Id</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Date of Creation</th>
+		<th>Delete</th>
+		<th>Edit</th>
+	</thead>
+	<tbody>
+<%i=1%>
+	<%@tcontent.each do |t|%>
+<tr>
+<td><%=i%></td>
+<td><%=t.id%></td>
+<td><%=t.title%></td>
+<td><%=t.author%></td>
+<td><%=t.date.to_date%></td>
+<td><i class="fas fa-trash-alt"></i></td>
+<td><i class="fas fa-edit"></i></td>
+<%i=i+1%>
+</tr>
+<%end%>
+</tbody>
+</table>
+	<%end%>
+	</div>
+<div id="admin_top3_div"> 
+<h2>Top 3</h2>
+	<%if Top3.all.count==0 %>
+	<%Top3.initdat%>
+	<%end%>
+	<%f=1%>
+	
+<table  id="top3table" class="display compact stripe hover">
+	<thead>
+		<th>S.no</th>
+		<th>Article ID</th>
+		<th>Title</th>
+		<th>Edit/Change</th>
+	</thead>
+	<tbody>
+		<%@top3.each do |t|%>
+		<tr>
+			<td><%=f%></td>
+			<td><%=t.post_id%></td>
+			<td><%=Content.find(t.post_id).title%></td>
+			<td><i class="fas fa-edit"></i></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+	
+	
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready( function () {
+    $('#admintable').DataTable();
+    $('#top3table').DataTable();
+} );
+</script>
+

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'admin/index' , as: 'adminindex'
+  get 'blog/index',as: 'blog_index'
+  post 'admin/contentsave', to: 'admin#contentsave', as: 'contentsave'
   get 'prevent/index', as: "prevent"
   get 'information/index', as:"info"
     namespace :api do

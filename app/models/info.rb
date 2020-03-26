@@ -40,7 +40,7 @@ if(update_date >cdate || update_time>ctime )
   puts i
 puts i%2
 
- if (i%2==0 || i == s-1 || i==s-2)
+ if (i%2==0 || i> s-6)
   i=i+1
   next
   

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  date: 2020-03-26 12:49:47
+  metakey: MyString
+  metadesc: MyString
+
+two:
+  title: MyString
+  author: MyString
+  date: 2020-03-26 12:49:47
+  metakey: MyString
+  metadesc: MyString
