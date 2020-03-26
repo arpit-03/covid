@@ -45,12 +45,14 @@
 <% data= Info.pluck(:time_created, :ttcci)%>
 <% data2= Info.pluck(:date_created)%>
 <% data3= Info.pluck(:ttccf)%>
+<% data4= Info.pluck(:tcured)%>
+<% data5= Info.pluck(:tdeath)%>
 <% i=0%>
 <% data.each do |r|%>
 
 <% r[0]=data2[i].to_s+" "+r[0].strftime("%H:%M:%S").to_s%>
 <%data[i][0].to_time%>
-<%data[i][1]=data[i][1]+data3[i]%>
+<%data[i][1]=data[i][1]+data3[i]-data4[i]-data5[i]%>
 <%i=i+1%>
 <%end%>
 <div id="people-chart" class="animated wow fadeInUp" data-wow-duration="1s">
