@@ -28,14 +28,18 @@
 	</div>
 		<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #f0af46">
 		<p class="stat-def">Percent Increase/Decrease Per Day</p>
-    <%isum=Info.select('DISTINCT ON ("date_created") *').order("date_created, time_created DESC").last(2)%>
-    
-    <%isum1=isum[0].ttcci%>
-    <%isum2=isum[1].ttcci%>
- 
-     <%fsum1=isum[0].ttccf%>
-    <%fsum2=isum[1].ttccf%>
-		<p class="stat-num"><%=(((isum2+fsum2-isum1-fsum1)/(isum1+fsum1*1.0))*100).round(2)%>%</p>
+    <%isum=Info.find_by_sql('select date_created,max(time_created) from infos group by date_created').last(2)%>
+    <%is1=Info.where(date_created: isum[0].date_created).last(1)[0]%>
+    <%is2=Info.where(date_created: isum[1].date_created).last(1)[0]%>
+    <%isum1=is1.ttcci%>
+    <%isum2=is2.ttcci%>
+ <%tcured1=is1.tcured%>
+ <%tcured2=is2.tcured%>
+ <%tdeath1=is1.tdeath%>
+ <%tdeath2= is2.tdeath%>
+     <%fsum1=is1.ttccf%>
+    <%fsum2=is2.ttccf%>
+		<p class="stat-num"><%=(((isum2+fsum2-tcured2-tdeath2-isum1-fsum1+tcured1+tdeath1)/(isum1-tcured1-tdeath1+fsum1*1.0))*100).round(2)%>%</p>
 	</div>
 </div>
 <% data= Info.pluck(:time_created, :ttcci)%>
@@ -50,7 +54,7 @@
 <%i=i+1%>
 <%end%>
 <div id="people-chart" class="animated wow fadeInUp" data-wow-duration="1s">
-<%= area_chart data , xtitle: "Time and Date", ytitle: "No. of People", colors:["#3a8af7"],width: "100%",library: {fontSize: 90}  ,stacked: true %>
+<%= area_chart data , xtitle: "Time and Date", ytitle: "No. of Active Cases", colors:["#3a8af7"],width: "100%",library: {fontSize: 90}  ,stacked: true %>
 </div>
 
 
