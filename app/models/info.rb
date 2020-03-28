@@ -30,7 +30,7 @@ end
 
 puts "ARPIT"
 
-infom=infom[8].children
+infom=infom[9].children
 s=infom.length
 
 if(update_date >cdate || update_time>ctime )
