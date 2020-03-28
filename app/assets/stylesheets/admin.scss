@@ -44,4 +44,21 @@ h2{
     text-align: center;
 }
 }
+#editpost{
+  position: absolute;
+    top: 0;
+    background-color: #e4ebf7f0;
+    padding: 150px;
+    left: 0;
+    width: 100vw;
+    z-index: 999;
+    /* border: solid 105px #ffffff17; */
+    height: 1000px;
+}
+#editpost_child{
+    border: 2px solid #cbc6d4;
+    border-radius: 20px;
+    padding: 90px;
+    background-color: #f1f1f1;
 
+}

@@ -1,0 +1,16 @@
+<div id="editpost">
+	<div id="editpost_child">
+	<div style="display: flex;justify-content: space-between;">	<h3 style="text-align: center;color: #6b7277;">Edit Post Id For Top 3</h3><div id="close2" style="cursor: pointer"><i  class="fas fa-times-circle"></i></div></div><br><br>
+<%=form_for id, url: edittop3update_path(id.id) do |f|%>
+<%=f.number_field :post_id , class: 'form-control', placeholder: 'post Id'%><br>
+
+<%=f.submit :class => 'btn btn-primary'%>
+<%end%>
+</div>
+</div>
+<script type="text/javascript">
+	$('#close2').click(function(){
+		console.log('run');
+		$('#editpost').remove();
+	});
+</script>

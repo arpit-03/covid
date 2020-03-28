@@ -1,0 +1,10 @@
+<meta name="keyword" content="<%=@data.metakey%>">
+<meta name="description" content="<%=@data.metadesc%>">
+<div class="contentblog_parent">
+<div class="contentblog">
+<h1 style="font-size: 32px;"><%=@data.title%></h1><br>
+<div style="display: flex;"><p><%=@data.author%></p><br>
+<p style="    margin-left: 20px;"><%=@data.date.to_date.strftime("%d/%m/%y")%></p><br></div>
+<p><%=@data.body%></p><br>
+</div>
+</div>

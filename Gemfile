@@ -15,6 +15,7 @@ gem 'pry'
 gem "chartkick"
 gem 'pg', '~> 0.18'
 gem 'whenever', :require => false
+gem 'image_processing'
 # Use sqlite3 as the database for Active Record
 
 # Use Puma as the app server

@@ -17,9 +17,50 @@
    background-color: #f90808;
     width: 300px;
     height: 200px;
+    background-position: center;
+    background-size: cover;
    }
       #mbf1{
    width: 400px;
-    background-color: chartreuse;
     height: 400px;
+    background-size: cover;
+    background-position: center;
    }
+
+   .first_text{
+       margin-left: 15px;
+    color: #fdfdfd;
+    background-color: #b9bdcebf;
+    font-weight: 800;
+    text-shadow: #383232 2px 2px;
+   }
+   #secondary_blog_front{
+   display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+   img{
+   width:200px;
+   }
+   #sectitle{
+   text-align: center;
+    height: 60px;
+    background-color: #a9b0c3;
+    font-weight: 600;
+    padding: 15px;
+   }
+   }
+#blogindex{
+a{
+  text-decoration:none;
+  color:white;
+}
+}
+.contentblog_parent{
+      padding: 80px;
+}
+.contentblog{
+  padding: 25px;
+    border: 2px solid #cecedc;
+    border-radius: 34px;
+    box-shadow: 2px 3px 26px #000000;
+}

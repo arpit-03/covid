@@ -9,7 +9,6 @@ class Info < ApplicationRecord
  infom= @parse_page.css('tbody')
  infosub=@parse_page.css('div.content.newtab').css('p')
  i=0
- 
 
 
 update_date=infosub.text.split('on ').last.split(' at ').first
@@ -31,7 +30,7 @@ end
 
 puts "ARPIT"
 
-infom=infom[7].children
+infom=infom[8].children
 s=infom.length
 
 if(update_date >cdate || update_time>ctime )

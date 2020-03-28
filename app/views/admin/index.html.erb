@@ -5,6 +5,8 @@
 <%=f.text_field :title , class: 'form-control', placeholder: 'Title'%><br>
 <%=f.text_field :author,class: 'form-control', placeholder: 'Author' %><br>
 <%=f.date_field :date,class: 'form-control' %><br>
+<%=f.label "Thumbnail"%><br>
+<%=f.file_field :img%><br><br>
 <%=f.rich_text_area :body %><br>
 <%=f.text_field :metakey,class: 'form-control', placeholder: 'Meta Keywords' %><br>
 <%=f.text_field :metadesc,class: 'form-control', placeholder: 'Meta Description' %><br>
@@ -39,8 +41,9 @@
 <td><%=t.title%></td>
 <td><%=t.author%></td>
 <td><%=t.date.to_date%></td>
-<td><i class="fas fa-trash-alt"></i></td>
-<td><i class="fas fa-edit"></i></td>
+<td class="post_delete" style="cursor: pointer "><i class="fas fa-trash-alt"></i></td>
+<td class="post_edit"><%= link_to "Edit", edit_path(t.id), remote: true %>
+</td>
 <%i=i+1%>
 </tr>
 <%end%>
@@ -68,7 +71,7 @@
 			<td><%=f%></td>
 			<td><%=t.post_id%></td>
 			<td><%=Content.find(t.post_id).title%></td>
-			<td><i class="fas fa-edit"></i></td>
+			<td><%= link_to "Edit", edittop3_path(t.post_id), remote: true,method: 'post' %></td>
 		</tr>
 		<%end%>
 	</tbody>
@@ -81,8 +84,26 @@
 
 <script type="text/javascript">
 	$(document).ready( function () {
-    $('#admintable').DataTable();
-    $('#top3table').DataTable();
+ var admintable =   $('#admintable').DataTable();
+  var top3table =   $('#top3table').DataTable();
+    $('.post_delete').click(function(){
+    	console.log($(this)[0].parentElement.children[1].textContent);
+    $.ajax({
+    	url: '/api/v1/admin/deletepost',
+    	type: 'post',
+    	data: {id: $(this)[0].parentElement.children[1].textContent},
+    	success: function(){
+    		console.log('done');
+    	admintable.row($(this)[0].parentElement).remove().draw();
+    	}
+    });
+});
+
+    $('.top3_delete').click(function(){
+
+    });
 } );
+	
+
 </script>
 

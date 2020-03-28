@@ -1,11 +1,40 @@
+<div id="blogindex">
 <div id="main_blog_front">
-	<div id="mbf1"></div>
+	<a href="<%=contentpage_path(Top3.first.post_id)%>"><div id="mbf1" style="background-image: url(<%=rails_blob_url(Content.find(Top3.first.post_id).img)%>)">
+	<div style="height:80%;"></div>
+		<div class="first_text"><h2 style="text-align: center;"><%=Content.find(Top3.first.post_id).title%></h2>
+		</div>
+	</div>
+</a>
 	<div id="main_blog_sec">
-		<div class="mbf2"></div>
-		<div class="mbf2"></div>
+	<a href="<%=contentpage_path(Top3.second.post_id)%>"><div class="mbf2" style="background-image: url(<%=rails_blob_url(Content.find(Top3.second.post_id).img)%>)">
+			<div style="height:70%"></div>
+				<div class="first_text"><h2 style="text-align: center;"><%=Content.find(Top3.second.post_id).title%></h2>
+		</div>
+
+			
+		</div>
+	</a>
+	<a href="<%=contentpage_path(Top3.third.post_id)%>">	<div class="mbf2" style="background-image: url(<%=rails_blob_url(Content.find(Top3.last.post_id).img)%>">
+			<div style="height:70%;"></div>
+				<div class="first_text"><h2 style="text-align: center;"><%=Content.find(Top3.last.post_id).title%></h2>
+		</div>
+			
+		</div>
+	</a>
 	</div>
 </div>
+<h2 style="margin-left: 20px;font-size: 25px;font-family: serif;border-bottom: 2px solid #c1adad;">Latest News</h2>
 <div id="secondary_blog_front">
-	
-</div>
 
+	<%@contents.each do |t|%>
+	<a href="<%=contentpage_path(t.id)%>">
+<div>
+	
+	<div><%=image_tag t.img%></div>
+	<div id="sectitle"><p><%=t.title%></p></div>
+</div>
+</a>
+	<%end%>
+</div>
+</div>
