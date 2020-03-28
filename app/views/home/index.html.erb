@@ -28,7 +28,7 @@
 	</div>
 		<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #f0af46">
 		<p class="stat-def">Percent Increase/Decrease Per Day</p>
-    <%isum=Info.find_by_sql('select date_created,max(time_created) from infos group by date_created').last(2)%>
+    <%isum=Info.find_by_sql('select date_created,max(time_created) from infos group by date_created order by date_created').last(2)%>
     <%is1=Info.where(date_created: isum[0].date_created).last(1)[0]%>
     <%is2=Info.where(date_created: isum[1].date_created).last(1)[0]%>
     <%isum1=is1.ttcci%>
