@@ -8,16 +8,13 @@
 	
 	<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #3a8af7">
 		<p class="stat-def">Total Cases</p>
-		<p class="stat-num"><%=Info.last.ttcci+Info.last.ttccf%></p>
+		<p class="stat-num"><%=Info.last.ttcci%></p>
 	</div>
 	<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #f0af46">
 		<p class="stat-def">Confirmed Cases (Indian National)</p>
 		<p class="stat-num"><%=Info.last.ttcci%></p>
 	</div>
-<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #5bae9f">
-	<p class="stat-def">Confirmed Cases (Foreign National)</p>
-		<p class="stat-num"><%=Info.last.ttccf%></p>
-	</div>
+
 	<div class="animated wow fadeIn" data-wow-duration="1s" style="background-color: #e4424e">
 		<p class="stat-def">Cured</p>
 		<p class="stat-num"><%=Info.last.tcured%></p>
@@ -37,14 +34,13 @@
  <%tcured2=is2.tcured%>
  <%tdeath1=is1.tdeath%>
  <%tdeath2= is2.tdeath%>
-     <%fsum1=is1.ttccf%>
-    <%fsum2=is2.ttccf%>
-		<p class="stat-num"><%=(((isum2+fsum2-tcured2-tdeath2-isum1-fsum1+tcured1+tdeath1)/(isum1-tcured1-tdeath1+fsum1*1.0))*100).round(2)%>%</p>
+   
+		<p class="stat-num"><%=(((isum2-tcured2-tdeath2-isum1+tcured1+tdeath1)/(isum1-tcured1-tdeath1*1.0))*100).round(2)%>%</p>
 	</div>
 </div>
 <% data= Info.pluck(:time_created, :ttcci)%>
 <% data2= Info.pluck(:date_created)%>
-<% data3= Info.pluck(:ttccf)%>
+
 <% data4= Info.pluck(:tcured)%>
 <% data5= Info.pluck(:tdeath)%>
 <% i=0%>
@@ -52,7 +48,7 @@
 
 <% r[0]=data2[i].to_s+" "+r[0].strftime("%H:%M:%S").to_s%>
 <%data[i][0].to_time%>
-<%data[i][1]=data[i][1]+data3[i]-data4[i]-data5[i]%>
+<%data[i][1]=data[i][1]-data4[i]-data5[i]%>
 <%i=i+1%>
 <%end%>
 <div id="people-chart" class="animated wow fadeInUp" data-wow-duration="1s">
@@ -70,8 +66,8 @@
 	<thead>
 		<th>S.No</th>
 		<th>State/ U.T Name</th>
-		<th>Total Confirmed Cases (Indian Nationals)</th>
-		<th>Total Confirmed Cases (Foreign Nationals)</th>
+		<th>Total Confirmed Cases</th>
+
 		<th>Cured</th>
 		<th>Deaths</th>
 	</thead>
@@ -81,7 +77,7 @@
 	<td><%=i%></td>
 	<td><%=row.name%></td>
 	<td><%=row.tcci%></td>
-	<td><%=row.tccf%></td>
+	
 	<td><%=row.cured%></td>
 	<td><%=row.death%></td>
 
@@ -92,7 +88,7 @@
 		<td></td>
 		<td></td>
 		<td><%=Ind1.sum(:tcci)%></td>
-		<td><%=Info.last.ttccf%></td>
+		
 		<td><%=Info.last.tcured%></td>
 		<td><%=Info.last.tdeath%></td>
 	</tfoot>
@@ -137,7 +133,7 @@ $(document).ready( function () {
         var data = google.visualization.arrayToDataTable([
           ['Type', 'No of People'],
           ['Total Confirmed Cases (Indian Nationals)',     result[0].tcci],
-          ['Total Confirmed Cases (Foreign Nationals)',       result[0].tccf],
+         
           ['Cured',  result[0].cured],
           ['Dead', result[0].death]
         ]);

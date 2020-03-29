@@ -39,7 +39,7 @@ if(update_date >cdate || update_time>ctime )
   puts i
 puts i%2
 
- if (i%2==0 || i> s-6)
+ if (i%2==0 || i> s-4)
   i=i+1
   next
   
@@ -48,14 +48,14 @@ puts i%2
 
 if(!Ind1.find_by(name: row.children[3].text))
 
-ind= Ind1.create(name: row.children[3].text, tcci: row.children[5].text.to_i , tccf: row.children[7].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)
+ind= Ind1.create(name: row.children[3].text, tcci: row.children[5].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)
 
 else
-Ind1.find_by(name: row.children[3].text).update(tcci: row.children[5].text.to_i , tccf: row.children[7].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)	
+Ind1.find_by(name: row.children[3].text).update(tcci: row.children[5].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)	
   end
    i=i+1
 end
-  Info.create(time_created: update_time,date_created: update_date, ttcci: Ind1.sum(:tcci), ttccf: Ind1.sum(:tccf), tcured: Ind1.sum(:cured), tdeath: Ind1.sum(:death))
+  Info.create(time_created: update_time,date_created: update_date, ttcci: Ind1.sum(:tcci), tcured: Ind1.sum(:cured), tdeath: Ind1.sum(:death))
 
 end
   end
