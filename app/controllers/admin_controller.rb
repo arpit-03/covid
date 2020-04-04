@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+	before_action :authenticate , except: [:sign_in,:checksignin]
     def index
   	@newpage=Content.new
   	@tcontent= Content.all
@@ -22,4 +23,23 @@ def edittop3update
 	Top3.find(params[:id]).update(post_id: params[:id][:post_id])
 	redirect_to adminindex_path
 	end
+	def sign_in
+	end
+	def checksignin
+		username= params[:username]
+		password= params[:password]
+		a=Admin.find_by(username: username)
+		if(a.password==password)
+			redirect_to adminindex_path
+		session[:user_id]=a.id
+		else
+			redirect_to sign_in_path
+		end
+	end
+	def authenticate
+if !session[:user_id]
+	redirect_to sign_in_path
+end
+	end
+
 end

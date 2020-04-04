@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post 'admin/edittop3update/:id', to: 'admin#edittop3update', as:'edittop3update'
   patch 'admin/update/:id', to: 'admin#contentupdate', as: 'contentupdate'
   get 'blog/contentpage/:id' , to: 'blog#contentpage', as: 'contentpage'
+  get 'admin/sign_in', to: 'admin#sign_in', as: 'sign_in'
+post 'admin/checksignin', to: 'admin#checksignin', as: 'checksignin'
     namespace :api do
     namespace :v1 do
 post 'home/sendcitydata', to: 'home#sendcitydata' ,as: 'api'

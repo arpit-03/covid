@@ -25,14 +25,20 @@
     height: 400px;
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column-reverse;
    }
 
    .first_text{
        margin-left: 15px;
+       margin-bottom: 10px;
     color: #fdfdfd;
     background-color: #b9bdcebf;
     font-weight: 800;
     text-shadow: #383232 2px 2px;
+    h2{
+    font-size:24px;
+    }
    }
    #secondary_blog_front{
    display: flex;
@@ -40,13 +46,16 @@
     flex-wrap:wrap;
    img{
    width:200px;
+       height: 140px;
    }
-   #sectitle{
+   .sectitle{
    text-align: center;
-    height: 60px;
+ height: inherit;
     background-color: #a9b0c3;
     font-weight: 600;
-    padding: 15px;
+  overflow:hidden;
+    font-size: 12px;
+    padding: 6px;
    }
    }
 #blogindex{
@@ -63,4 +72,118 @@ a{
     border: 2px solid #cecedc;
     border-radius: 34px;
     box-shadow: 2px 3px 26px #000000;
+}
+#latestnews{
+  margin-left: 20px;
+  font-size: 25px;
+  font-family: serif;
+  border-bottom: 2px solid #c1adad;
+}
+.blog_points{
+  height:180px;
+  margin: 10px;
+}
+
+
+.ctitle{
+  font-size: 32px;
+  font-family: serif;
+}
+.cauthor{
+  display: flex;
+  color: #c1c5ce;
+}
+.ccalender{
+   margin-left: 20px;
+   color: #c1c5ce;
+}
+.cbody{
+  
+}
+
+.blog_points{
+  width: min-content;
+  overflow: hidden;
+}
+
+
+
+
+@media (max-width: 992px) { 
+.ctitle{
+  font-size: 38px;
+}
+.cauthor{
+      font-size: 20px;
+      color:#9b9ea7;
+}
+.ccalender{
+      font-size: 20px;
+      color:#9b9ea7;
+}
+.trix-content{
+  font-size: 20px;
+}
+#mbf1{
+  width: 450px;
+    height: 50vh;
+    /* border-radius: 29px; */
+    border: solid 4px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column-reverse;
+    h2{
+    font-size: 34px;
+    }
+}
+.mbf2{
+  width: 350px;
+    border: solid;
+    border: sloid;
+    height: 25vh;
+    background-position: center;
+    background-size: cover;
+    h2{
+    font-size: 34px;
+    }
+}
+#latestnews{
+  font-size:50px;
+}
+#secondary_blog_front{
+  display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.blog_points{
+  width: 98vw ;
+    overflow: hidden;
+    display: flex;
+   
+}
+#bpimg{
+   img{
+        width: 300px;
+        height: 180px;
+    }
+}
+.sectitle{
+  text-align: justify;
+   
+    height: inherit;
+    width: inherit;
+    background-color: #e9ecf3 !important;
+    font-weight: 600;
+    overflow: hidden;
+    font-size: 12px;
+    padding: 6px;
+    margin-left: 10px;
+    p{
+    color: black;
+    font-size: 22px;
+    margin-left: 10px;
+    }
+}
 }

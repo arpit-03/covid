@@ -7,13 +7,16 @@ class Info < ApplicationRecord
   	doc=HTTParty.get("https://www.mohfw.gov.in/")
   	@parse_page ||= Nokogiri::HTML(doc)
    
- infom= @parse_page.css('tbody')
- infosub=@parse_page.css('div.content.newtab').css('p')
+ # infom= @parse_page.css('tbody')
+ # infosub=@parse_page.css('div.content.newtab').css('p')
+ infom=@parse_page.css('ul')
+ infosub=@parse_page.css('div.status-update')
+ infosub=infosub.children[1].text
  i=0
 
 
-update_date=infosub.text.split('on ').last.split(' at ').first
-update_time=infosub.text.split('on ').last.split(' at ').last.split(')').first
+update_date=infosub.split(': ').last.split(',').first
+update_time=infosub.split(', ').last.split(' GMT').first
 
 update_date=update_date.to_date
 update_time=Time.parse(update_time).strftime("%H:%M:%S")
@@ -31,33 +34,40 @@ end
 
 puts "ARPIT"
 
-infom=infom[9].children
-s=infom.length
+infom=infom[6].children
+# s=infom.length
 
-if(update_date >cdate || update_time>ctime )
+# if(update_date >cdate || update_time>ctime )
 
- infom.each do |row|
-  puts i
-puts i%2
+#  infom.each do |row|
+#   puts i
+# puts i%2
 
- if (i%2==0 || i> s-4)
-  i=i+1
-  next
+#  if (i%2==0 || i> s-4)
+#   i=i+1
+#   next
   
- end
+#  end
 
 
-if(!Ind1.find_by(name: row.children[3].text))
+# if(!Ind1.find_by(name: row.children[3].text))
 
-ind= Ind1.create(name: row.children[3].text, tcci: row.children[5].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)
+# ind= Ind1.create(name: row.children[3].text, tcci: row.children[5].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)
 
-else
-Ind1.find_by(name: row.children[3].text).update(tcci: row.children[5].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)	
-  end
-   i=i+1
-end
-  Info.create(time_created: update_time,date_created: update_date, ttcci: Ind1.sum(:tcci), tcured: Ind1.sum(:cured), tdeath: Ind1.sum(:death))
+# else
+# Ind1.find_by(name: row.children[3].text).update(tcci: row.children[5].text.to_i ,cured: row.children[9].text.to_i, death: row.children[11].text.to_i)	
+#   end
+#    i=i+1
+# end
+#   Info.create(time_created: update_time,date_created: update_date, ttcci: Ind1.sum(:tcci), tcured: Ind1.sum(:cured), tdeath: Ind1.sum(:death))
 
+# end
+if(update_date >cdate || update_time>ctime )
+activec=infom[1].children[3].text.to_i
+curec=infom[3].children[3].text.to_i
+deathc= infom[5].children[3].text.to_i
+migrate=infom[7].children[3].text.to_i
+Info.create(time_created: update_time,date_created: update_date, ttcci: activec+curec+deathc+migrate, tcured: curec, tdeath: deathc)
 end
   end
  
