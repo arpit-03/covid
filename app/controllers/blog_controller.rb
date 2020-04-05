@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+  include ActionText::Attachable
   def index
   @contents=Content.limit(10)
   end
