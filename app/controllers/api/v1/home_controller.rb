@@ -8,7 +8,6 @@ module Api
 		data=[
 			name:city_name.name,
 			tcci: city_name.tcci,
-			tccf: city_name.tccf,
 			cured: city_name.cured,
 			death: city_name.death
 		]

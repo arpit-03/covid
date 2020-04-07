@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_110714) do
+ActiveRecord::Schema.define(version: 2020_04_07_201321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2020_03_30_110714) do
   create_table "ind1s", force: :cascade do |t|
     t.string "name"
     t.integer "tcci"
-    t.integer "tccf"
     t.integer "cured"
     t.integer "death"
     t.datetime "created_at", precision: 6, null: false
@@ -83,7 +82,6 @@ ActiveRecord::Schema.define(version: 2020_03_30_110714) do
     t.time "time_created"
     t.date "date_created"
     t.integer "ttcci"
-    t.integer "ttccf"
     t.integer "tcured"
     t.integer "tdeath"
     t.datetime "created_at", precision: 6, null: false
