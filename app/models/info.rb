@@ -93,7 +93,7 @@ break
 end
 end
 Info.create(time_created: update_time,date_created: update_date, ttcci: activec+curec+deathc+migrate, tcured: curec, tdeath: deathc)
-end
-  end
+ end
  
+end
 end
